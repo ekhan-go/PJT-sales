@@ -33,6 +33,13 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Verify backend and database connection
+        run: npm run check:connection
+        env:
+          VITE_API_BASE_URL: ${{ vars.VITE_API_BASE_URL }}
+          FRONTEND_ORIGIN: https://ekhan-go.github.io
+          REQUIRE_PUBLIC_API: 'true'
+
       - name: Build
         run: npm run build
         env:

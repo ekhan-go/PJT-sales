@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check:connection": "node scripts/check-connection.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
