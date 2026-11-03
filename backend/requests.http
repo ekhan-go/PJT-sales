@@ -1,0 +1,35 @@
+### DB 연결
+GET http://localhost:8088/api/system
+
+### 목록 검색
+GET http://localhost:8088/api/sales/customers?page=1&size=10&field=C_NAME&keyword=상사
+
+### 상품 목록
+GET http://localhost:8088/api/sales/products?page=1&size=10
+
+### 재고 목록
+GET http://localhost:8088/api/sales/stocks?page=1&size=10
+
+### 거래 목록
+GET http://localhost:8088/api/sales/trades?page=1&size=10
+
+### 상세 (목록의 _rowId를 입력)
+GET http://localhost:8088/api/sales/customers/{{rowId}}
+
+### 등록 (실제 Oracle 데이터가 추가됩니다)
+POST http://localhost:8088/api/sales/customers
+Content-Type: application/json
+
+{"values":{"C_CODE":"12345","C_NAME":"테스트 거래처","C_CEO":null,"C_ADDR":null,"C_PHONE":null}}
+
+### 수정 (상세의 _version을 입력)
+PUT http://localhost:8088/api/sales/customers/{{rowId}}
+Content-Type: application/json
+
+{"values":{"C_CODE":"12345","C_NAME":"수정 거래처","C_CEO":null,"C_ADDR":null,"C_PHONE":null},"version":"{{version}}"}
+
+### 삭제 (실제 Oracle에서 선택한 행 1건이 삭제됩니다)
+DELETE http://localhost:8088/api/sales/customers/{{rowId}}
+Content-Type: application/json
+
+{"version":"{{version}}"}
